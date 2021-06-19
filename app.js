@@ -6,7 +6,11 @@ let toDoList = [{
     check: false
 }
 ];
+
+
 let dtdl = document.querySelector("#tdlist");
+
+
 for(i in toDoList){
     dtdl.appendChild(createToDo(toDoList[i]));
 }
@@ -72,6 +76,8 @@ function updatebtn(){
             })
     }
 }
+
+
 function updateCb(){
     for(let i = 0 ; i < checkBoxes.length; i++){
         checkBoxes[i].removeEventListener('change',function(){
