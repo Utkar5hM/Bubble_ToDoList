@@ -16,7 +16,7 @@ function createToDo(tdobj){
     litd.classList.add('toDoItems');
     //checkbox with class checkBoxToDoCss
     let checkBoxToDo = document.createElement("INPUT");
-    checkBoxToDo.classList.add("checkBoxToDoCss");
+    checkBoxToDo.classList.add("checkBoxToDo");
     checkBoxToDo.setAttribute("type", "checkbox");
     checkBoxToDo.checked = tdobj.check;
     litd.appendChild(checkBoxToDo);
@@ -33,7 +33,11 @@ function createToDo(tdobj){
     return litd;
 }
 
+let btn =document.querySelectorAll(".btnToDo"); 
+let checkBoxes =  document.getElementsByClassName("checkBoxToDo");
 let addform = document.querySelector("#addtdform");
+let todoitems = document.querySelectorAll(".toDoItems");
+
 addform.addEventListener('submit',function (e){
     e.preventDefault();
     let TodoAddObj = {
@@ -42,13 +46,41 @@ addform.addEventListener('submit',function (e){
     }
     toDoList.push(TodoAddObj);
     dtdl.appendChild(createToDo(TodoAddObj));
-})
 
-let todoitems = document.querySelectorAll(".toDoItems");
-for( i in todoitems){
-    let btn =document.querySelector("button");
-    btn.addEventListener('click', function(){    
-            toDoList.splice(i,1);
-            dtdl.removeChild(dtdl.children[i]);
-        })
+    //For Reassigning Event listener since elements are Changed.
+    btn = document.querySelectorAll(".btnToDo"); 
+    updatebtn();
+    updateCb();
+})
+updatebtn();
+updateCb();
+
+
+
+function updatebtn(){
+    todoitems = document.querySelectorAll(".toDoItems");
+    btn = document.querySelectorAll(".btnToDo"); 
+    for(let i = 0 ; i < btn.length; i++){
+        btn[i].addEventListener('click', function(){    
+                toDoList.splice(i,1);
+                todoitems[i].remove();
+                todoitems = document.querySelectorAll(".toDoItems");
+                btn = document.querySelectorAll(".btnToDo"); 
+                for(let i = 0 ; i < btn.length; i++){
+                    btn[i].addEventListener('click', function(){    
+                            toDoList.splice(i,1);
+                            todoitems[i].remove();
+                            todoitems = document.querySelectorAll(".toDoItems");
+                        })
+                } 
+            })
+    } 
+}
+function updateCb(){
+    checkBoxes =  document.getElementsByClassName("checkBoxToDo");
+    for(let i = 0 ; i < checkBoxes.length; i++){
+        checkBoxes[i].addEventListener('change', e => {
+                toDoList[i]["check"]= checkBoxes[i].checked;
+        });
+    } 
 }
