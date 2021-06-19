@@ -61,25 +61,25 @@ function updatebtn(){
     todoitems = document.querySelectorAll(".toDoItems");
     btn = document.querySelectorAll(".btnToDo"); 
     for(let i = 0 ; i < btn.length; i++){
+        btn[i].removeEventListener('click',function(){
+        });
+    } 
+    for(let i = 0 ; i < btn.length; i++){
         btn[i].addEventListener('click', function(){    
                 toDoList.splice(i,1);
                 todoitems[i].remove();
-                todoitems = document.querySelectorAll(".toDoItems");
-                btn = document.querySelectorAll(".btnToDo"); 
-                for(let i = 0 ; i < btn.length; i++){
-                    btn[i].addEventListener('click', function(){    
-                            toDoList.splice(i,1);
-                            todoitems[i].remove();
-                            todoitems = document.querySelectorAll(".toDoItems");
-                        })
-                } 
+                updateCb();
             })
-    } 
+    }
 }
 function updateCb(){
+    for(let i = 0 ; i < checkBoxes.length; i++){
+        checkBoxes[i].removeEventListener('change',function(){
+        });
+    } 
     checkBoxes =  document.getElementsByClassName("checkBoxToDo");
     for(let i = 0 ; i < checkBoxes.length; i++){
-        checkBoxes[i].addEventListener('change', e => {
+        checkBoxes[i].addEventListener('change', function() {
                 toDoList[i]["check"]= checkBoxes[i].checked;
         });
     } 
