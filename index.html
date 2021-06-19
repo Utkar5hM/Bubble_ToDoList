@@ -1,22 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bubble | To Do List</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./css/button/button.css">
+    <link rel="stylesheet" href="./css/text_field/text_field.css">
+    <link rel="stylesheet" href="./css/card/card.css">
+    <link rel="stylesheet" href="./css/item/item.css">
+    <link rel="stylesheet" href="./css/checkbox/checkbox.css">
+    <script src="javascript/checkbox.js"></script
+
+
 </head>
+
 <body>
-    <h1> Bubble | To do List</h1>
-    <div class="addtdl">
-        <form action="" id="addtdform">
-            <input type="text" name="text" id="textToDo">
-            <button id='addtodo'>Add</button>
-        </form>
+    <div class="card">
+
+        <div class="wrapper">
+
+            <h1> Bubble | To do List</h1>
+            <div class="addtdl">
+                <form action="" id="addtdform">
+                    <div class="input_group">
+                        <input type="text" name="text" id="textToDo" autocomplete="off" class="primary_input">
+
+                        <label class="primary_input_label">Name</label>
+                    </div>
+                    <button id='addtodo' class='primary_button'>Add</button>
+                </form>
+            </div>
+
+        </div>
     </div>
-    <div class="listdiv"><ul id="tdlist">
-    </ul></div>
+
+    <div class="card">
+        <div class="wrapper">
+            <div class="listdiv">
+                <ul id="tdlist" class="list">
+                    
+                    
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Edit js to match this html markup and add item accordingly -->
+    <li class="list_item">
+
+    <div class="card">
+        <div class="wrapper checkbox">
+            <div class="item">
+                <input type="checkbox" style="visibility: hidden" id="checkbox" name="item">
+                <label for="item">This is working </label>
+            </div>
+        </div>
+    </div>
+    
+    </li>
+
+    <!-- Indivisual element markup -->
+    
+
+
     <script src="app.js"></script>
-</body>
+    </body>
+
 </html>
