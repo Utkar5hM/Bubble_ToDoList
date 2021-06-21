@@ -67,7 +67,7 @@ addform.addEventListener('submit',function (e){
     checkBoxes =  document.getElementsByClassName("checkBoxToDo");
     let j =toDoList.length;
     btn[j-1].addEventListener('click', function(){    
-        todoitems[i].style.display = "none";
+        todoitems[j-1].style.display = "none";
         toDoList[j-1].deleted=true;
     })
     checkBoxes[j-1].addEventListener('change', function() {
